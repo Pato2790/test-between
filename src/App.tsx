@@ -1,25 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Typography, Box, CssBaseline, ThemeProvider } from '@material-ui/core';
+import { theme } from './Themes/theme';
+import ListAnimals from './Components/ListAnimals/ListAnimals';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Typography component="div">
+        <Box fontWeight="fontWeightBold" textAlign="center" fontSize="h2.fontSize" m={3}>
+          Animal Lovers Blog
+        </Box>
+      </Typography>
+      <Typography component="div">
+        <Box textAlign="center" fontSize="h6.fontSize" m={3}>
+          These are our users who have chosen their favorite animals. Remember that the tables are grouped by animals!
+        </Box>
+      </Typography>
+      <ListAnimals />
+    </ThemeProvider>
   );
 }
 
