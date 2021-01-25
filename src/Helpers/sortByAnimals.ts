@@ -1,7 +1,7 @@
 import { SortUsersByAnimal } from './../Models/sortAnimal';
 import { User } from "../Models/user";
 
-const sortUsersByAnimals = (users: User[], showOffline: boolean = false) => {
+const sortUsersByAnimals = (users: User[], showOffline: boolean = false, showMoreUsers: boolean = false) => {
     const mapSortedUsersByAnimals: SortUsersByAnimal[] = [];
 
     const sortedUsersByAnimals = users.reduce((acc: Map<string, User[]>, user: User) => {
@@ -22,7 +22,7 @@ const sortUsersByAnimals = (users: User[], showOffline: boolean = false) => {
     }, new Map<string, User[]>());
 
     sortedUsersByAnimals.forEach((users: User[], animal: string) => {
-        mapSortedUsersByAnimals.push({ animal, users });
+        mapSortedUsersByAnimals.push({ animal, users: users.slice(0, showMoreUsers ? 24 : 9) });
     });
 
     return mapSortedUsersByAnimals;

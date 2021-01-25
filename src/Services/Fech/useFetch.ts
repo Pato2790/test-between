@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
-import { User } from "../../Models/user";
 
-const baseUrl: string = "http://localhost:3001/users";
-
-const GetUsers = (): [User[], boolean] => {
+const useFetch = (baseUrl: string) => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -16,9 +13,9 @@ const GetUsers = (): [User[], boolean] => {
 
     useEffect(() => {
         fetchUrl();
-    }, []);
+    }, [baseUrl]);
 
-    return [data, loading];
+    return { data, loading };
 }
 
-export { GetUsers };
+export default useFetch;

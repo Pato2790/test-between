@@ -1,7 +1,9 @@
 import React from 'react';
 import { Typography, Box, CssBaseline, ThemeProvider } from '@material-ui/core';
 import { theme } from './Themes/theme';
+import { FilterProvider } from './Helpers/filterContext';
 import ListAnimals from './Components/ListAnimals/ListAnimals';
+import FilterList from './Components/FilterList/FilterList';
 import './App.css';
 
 function App() {
@@ -18,7 +20,10 @@ function App() {
           These are our users who have chosen their favorite animals. Remember that the tables are grouped by animals!
         </Box>
       </Typography>
-      <ListAnimals />
+      <FilterProvider>
+        <FilterList />
+        <ListAnimals />
+      </FilterProvider>
     </ThemeProvider>
   );
 }
